@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace RunPythonScript
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             // specify the path to the Anaconda environment activation script
             string activateScript = @"C:\Users\JHmachine\anaconda3\Scripts\activate.bat";
@@ -25,11 +26,22 @@ namespace RunPythonScript
             process.StartInfo.Arguments = $@"/c ""{command}""";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
-            process.Start();
-            process.WaitForExit();
 
-            // print the output of the Python script to the console
-            Console.WriteLine(process.StandardOutput.ReadToEnd());
+            process.OutputDataReceived += (sender, e) =>
+            {
+                if (!string.IsNullOrEmpty(e.Data))
+                {
+                    Console.WriteLine(e.Data);
+                }
+            };
+
+            process.Start();
+            process.BeginOutputReadLine();
+
+            await process.WaitForExitAsync();
+
+            Console.WriteLine("Python script has finished.");
         }
     }
 }
+

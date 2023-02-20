@@ -6,6 +6,7 @@ This is a temporary script file.
 """
 import cv2
 import mediapipe as mp
+import sys
 
 
 mp_drawing = mp.solutions.drawing_utils
@@ -56,6 +57,8 @@ with mp_pose.Pose(
                 landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
     # Flip the image horizontally for a selfie-view display.
     cv2.imshow('MediaPipe Pose', cv2.flip(image, 1))
+    print("123")
+    sys.stdout.flush()
     if cv2.waitKey(5) & 0xFF == ord('q'):
       break
 cv2.destroyAllWindows()
