@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JHmachine\\Desktop\\app\\app.csproj": {}
+    "C:\\Users\\RaPIDadmin\\Python-in-C-\\app\\app.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JHmachine\\Desktop\\app\\app.csproj": {
+    "C:\\Users\\RaPIDadmin\\Python-in-C-\\app\\app.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JHmachine\\Desktop\\app\\app.csproj",
+        "projectUniqueName": "C:\\Users\\RaPIDadmin\\Python-in-C-\\app\\app.csproj",
         "projectName": "app",
-        "projectPath": "C:\\Users\\JHmachine\\Desktop\\app\\app.csproj",
-        "packagesPath": "C:\\Users\\JHmachine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JHmachine\\Desktop\\app\\obj\\",
+        "projectPath": "C:\\Users\\RaPIDadmin\\Python-in-C-\\app\\app.csproj",
+        "packagesPath": "C:\\Users\\RaPIDadmin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\RaPIDadmin\\Python-in-C-\\app\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\JHmachine\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\RaPIDadmin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"

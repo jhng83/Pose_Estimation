@@ -33,20 +33,50 @@ with mp_pose.Pose(
     # pass by reference.
     image.flags.writeable = False
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    scale_percent = 150 # percent of original size
+    width = int(image.shape[1] * scale_percent / 100)
+    height = int(image.shape[0] * scale_percent / 100)
+    dim = (width, height)
+     
+    # resize image
+    image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
     results_pose = pose.process(image)
     results_hand = hands.process(image)
 
     # Draw the pose annotation on the image.
     image.flags.writeable = True
     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+    
     if results_hand.multi_hand_landmarks:
-        for hand_landmarks in results_hand.multi_hand_landmarks:
+        # Get the landmarks of the first hand detected
+        landmarks = results_hand.multi_hand_landmarks[0]
+        
+        # Get the indices of the landmarks representing the left arm
+        left_arm_landmark_indices = [11, 13, 15, 17, 19, 5]
+        
+        # Get the coordinates of the left arm
+        left_arm_coordinates = []
+        for index in left_arm_landmark_indices:
+            if landmarks.landmark[index].visibility < 0 or landmarks.landmark[index].presence < 0:
+                # Landmark not detected
+                left_arm_coordinates.append(None)
+              
+            else:
+                # Landmark detected
+                left_arm_coordinates.append((int(landmarks.landmark[index].x * image.shape[1]), int(landmarks.landmark[index].y * image.shape[0])))
+        
+        # Print the coordinates of the left arm
+        left_arm_coordinates_str = ', '.join([f'({x},{y})' for x, y in left_arm_coordinates])
+        print("coordinates:"+left_arm_coordinates_str)
+        
+        for landmarks in results_hand.multi_hand_landmarks:
            mp_drawing.draw_landmarks(
            image,
-           hand_landmarks,
+           landmarks,
            mp_hands.HAND_CONNECTIONS,
            mp_drawing_styles.get_default_hand_landmarks_style(),
            mp_drawing_styles.get_default_hand_connections_style())
+           
            
     if results_pose.pose_landmarks:   
         for landmark in results_pose.pose_landmarks.landmark:
@@ -57,7 +87,7 @@ with mp_pose.Pose(
                 landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
     # Flip the image horizontally for a selfie-view display.
     cv2.imshow('MediaPipe Pose', cv2.flip(image, 1))
-    print("123")
+    
     sys.stdout.flush()
     if cv2.waitKey(5) & 0xFF == ord('q'):
       break

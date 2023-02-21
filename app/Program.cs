@@ -9,13 +9,13 @@ namespace RunPythonScript
         static async Task Main(string[] args)
         {
             // specify the path to the Anaconda environment activation script
-            string activateScript = @"C:\Users\JHmachine\anaconda3\Scripts\activate.bat";
+            string activateScript = @"C:\Users\RaPIDadmin\anaconda3\Scripts\activate.bat";
 
             // specify the name of the Anaconda environment
             string environmentName = "py38";
 
             // specify the path to the Python script that you want to run
-            string scriptPath = @"C:\Users\JHmachine\Desktop\app\pose.py";
+            string scriptPath = @"C:\Users\RaPIDadmin\Python-in-C-\app\pose.py";
 
             // specify the command to activate the Anaconda environment and run the Python script
             string command = $@"call {activateScript} {environmentName} && python {scriptPath}";

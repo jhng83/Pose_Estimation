@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "62ZIx9ACWGrr2342bj2thsfxOG2I+9ksy41VkrXt1quhaIAdgfRDWqO6++kCUshyeNgkCiNFaVRWCMo4st3ZNw==",
+  "dgSpecHash": "MiFLwMtKF+rfvAuIXxNxvPqH+txsvc2mQ9QxGVkmZOkkra2qj/baoK4fsDHj7wCchUINnyBm0o1lEyowUb6j1w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\JHmachine\\Desktop\\app\\app.csproj",
+  "projectFilePath": "C:\\Users\\RaPIDadmin\\Python-in-C-\\app\\app.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\JHmachine\\.nuget\\packages\\python.runtime\\2.7.9\\python.runtime.2.7.9.nupkg.sha512"
+    "C:\\Users\\RaPIDadmin\\.nuget\\packages\\python.runtime\\2.7.9\\python.runtime.2.7.9.nupkg.sha512"
   ],
   "logs": []
 }
